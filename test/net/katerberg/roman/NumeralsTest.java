@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class NumeralsTest {
+	String charVals = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 	Random random;
 	@Before
@@ -17,18 +18,23 @@ public class NumeralsTest {
 	}
 
 	@Test
-	public void testNumeralsIsSingleton() {
+	public void testNumerals_is_singleton() {
 		
-		String testKey = random.nextInt()+"never is there";
+		Character testKey = getRandomCharacter();
 		int testValue = random.nextInt();
 		
-		Map<String, Integer> testObject = Numerals.getInstance();
+		Map<Character, Integer> testObject = Numerals.getInstance();
 
 		assertNotNull(testObject);
 		assertFalse(testObject.containsKey(testKey));
 		testObject.put(testKey, testValue);
 		assertNotNull(Numerals.getInstance().get(testKey));
-		
+	}
+	
+	
+	private Character getRandomCharacter() {
+		return charVals.charAt(random.nextInt(charVals.length()-1));
 	}
 
+	
 }
