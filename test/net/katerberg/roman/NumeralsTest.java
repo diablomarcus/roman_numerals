@@ -31,10 +31,7 @@ public class NumeralsTest {
 		assertNotNull(Numerals.getInstance().get(testKey));
 	}
 	
-	
 	private Character getRandomCharacter() {
 		return charVals.charAt(random.nextInt(charVals.length()-1));
 	}
-
-	
 }
