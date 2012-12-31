@@ -28,7 +28,7 @@ public class Processor {
 	}
 	
 	public String convert(int unconverted) {
-		if (!isInputValid(unconverted)) {
+		if (unconverted <= 0) {
 			return null;
 		}
 		
@@ -48,7 +48,8 @@ public class Processor {
 		if (!Numerals.isValidNumeral(numeral)) {
 			return null;
 		}
-		
+
+		//I'm not a huge fan of this bit. It feels like it should be better devolved into objects
 		Integer returnVal = 0;
 		while(!numeral.isEmpty()){
 			for (Integer value : descendingValues) {
@@ -63,10 +64,4 @@ public class Processor {
 		return returnVal;
 	}
 	
-	private boolean isInputValid(int test) {
-		if (test > 0) {
-			return true;
-		}
-		return false;
-	}
 }
