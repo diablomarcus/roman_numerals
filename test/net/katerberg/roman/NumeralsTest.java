@@ -1,12 +1,12 @@
 package net.katerberg.roman;
 
-import static org.junit.Assert.*;
-import static net.katerberg.roman.TestingUtil.*;
+import static net.katerberg.roman.TestingUtil.getRandomCharacter;
+import static net.katerberg.roman.TestingUtil.getRandomInteger;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Map;
-import java.util.Random;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class NumeralsTest {

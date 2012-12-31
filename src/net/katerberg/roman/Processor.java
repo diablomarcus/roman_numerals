@@ -6,12 +6,12 @@ public class Processor {
 		
 	}
 
-	public Object convert(int i) {
+	public String convert(int i) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Object convert(String randomString) {
+	public Integer convert(String randomString) {
 		// TODO Auto-generated method stub
 		return null;
 	}

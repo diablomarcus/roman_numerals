@@ -3,6 +3,7 @@ package net.katerberg.roman;
 import static org.junit.Assert.*;
 import static net.katerberg.roman.TestingUtil.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Before;
@@ -10,22 +11,32 @@ import org.junit.Test;
 
 public class ProcessorTest {
 
-	Processor testObject;
+	private Processor testObject;
+	private final Map<String, Integer> testCases= new HashMap<String, Integer>();
 	
 	@Before
 	public void setUp() throws Exception {
 		testObject = new Processor();
+		
+		createTestCases();
 	}
 
 	@Test
 	public void testProcessor_converts_latin_to_arabic() {
 		
-		fail(); //Not yet implemented
+		for(String testCase : testCases.keySet()){
+			assertEquals(testCases.get(testCase), testObject.convert(testCase));
+		}
 	}
 	
 	@Test
 	public void testProcessor_converts_arabic_to_latin() {
-		fail(); //Not yet implemented
+		
+		for(Integer testCase : testCases.values()){
+			String returnVal = testObject.convert(testCase);
+			assertTrue(testCases.containsKey(returnVal));
+			assertEquals(testCase, testCases.get(returnVal));
+		}
 	}
 	
 	@Test
@@ -60,4 +71,15 @@ public class ProcessorTest {
 		assertNull(testObject.convert(randomString));
 	}
 	
+	
+	private void createTestCases() {
+		//These aren't meant to be comprehensive, just a few basic test cases
+		testCases.clear();
+		testCases.put("I", 1);
+		testCases.put("III", 1);
+		testCases.put("IV", 4);
+		testCases.put("VI", 6);
+		testCases.put("DCII", 602);
+		testCases.put("MCMLIV", 1954);
+	}
 }
