@@ -20,7 +20,22 @@ public class Numerals {
 	}
 	
 	public synchronized static boolean isValidNumeral(String testedString){
-		return false;
+		//Make sure it's not empty
+		if (null == testedString || testedString.isEmpty()) {
+			return false;
+		}
+		//Make sure only valid characters are in it
+		StringBuilder validValues = new StringBuilder();
+		for (String value : _INSTANCE.keySet()) {
+			validValues.append(value);
+		}
+		
+		if (!testedString.matches("^["+validValues+"]+$")) {
+			return false;
+		}
+		
+		
+		return true;
 	}
 
 	private static void createNewInstance() {

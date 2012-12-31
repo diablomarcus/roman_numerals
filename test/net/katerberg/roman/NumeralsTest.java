@@ -31,6 +31,8 @@ public class NumeralsTest {
 		assertTrue(Numerals.isValidNumeral("D")); //Basic
 		assertTrue(Numerals.isValidNumeral("IV")); //Pre-vals
 		assertTrue(Numerals.isValidNumeral("CMX")); //Concatenated things
+		assertFalse(Numerals.isValidNumeral(null)); //Nulls
+		assertFalse(Numerals.isValidNumeral("")); //Blank
 		assertFalse(Numerals.isValidNumeral("FXSADF")); //Random chars
 		assertFalse(Numerals.isValidNumeral("iv")); //Lowers
 		assertFalse(Numerals.isValidNumeral("V13")); //Numerics
