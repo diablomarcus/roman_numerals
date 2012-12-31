@@ -8,8 +8,10 @@ import java.util.Map;
 
 public class Processor {
 	//TODO: Make this bidirectional
-	Map<String, Integer> numerals;
-	Map<Integer, String> arabics;
+	private final Map<String, Integer> numerals;
+	private final Map<Integer, String> arabics;
+
+	private final List<Integer> sortedVals;
 	
 	public Processor() {
 		numerals = Numerals.getInstance();
@@ -19,16 +21,15 @@ public class Processor {
 			arabics.put(numerals.get(value), value);
 		}
 		
+		sortedVals = new ArrayList<Integer>(numerals.values());
+		Collections.sort((List<Integer>)sortedVals);
+		Collections.reverse((List<Integer>)sortedVals);
 	}
 	
 	public String convert(int unconverted) {
 		if (!isInputValid(unconverted)) {
 			return null;
 		}
-		
-		List<Integer> sortedVals = new ArrayList<Integer>(numerals.values());
-		Collections.sort((List<Integer>)sortedVals);
-		Collections.reverse((List<Integer>)sortedVals);
 		
 		StringBuilder latinVal = new StringBuilder();
 		for (Integer value : sortedVals) {
@@ -46,10 +47,6 @@ public class Processor {
 		if (!isInputValid(numeral)) {
 			return null;
 		}
-		
-		List<Integer> sortedVals = new ArrayList<Integer>(numerals.values());
-		Collections.sort((List<Integer>)sortedVals);
-		Collections.reverse((List<Integer>)sortedVals);
 		
 		Integer returnVal = 0;
 		while(!numeral.isEmpty()){
