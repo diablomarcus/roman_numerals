@@ -66,7 +66,7 @@ public class ProcessorTest {
 		 randomString = getRandomString();
 		 assertNotNull(randomString);
 		 //Make sure this string isn't a valid one
-		} while (randomString.length() < 2 
+		} while (randomString.length() < 3 
 				|| numerals.containsKey(randomString.charAt(0)) 
 				|| numerals.containsKey(randomString.subSequence(0, 1)));
 		
@@ -78,7 +78,7 @@ public class ProcessorTest {
 		//These aren't meant to be comprehensive, just a few basic test cases
 		testCases.clear();
 		testCases.put("I", 1);
-		testCases.put("III", 1);
+		testCases.put("III", 3);
 		testCases.put("IV", 4);
 		testCases.put("VI", 6);
 		testCases.put("DCII", 602);

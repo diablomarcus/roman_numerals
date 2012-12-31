@@ -20,7 +20,7 @@ public class TestingUtil {
 	
 	public static String getRandomString() {
 		StringBuilder returnVal = new StringBuilder();
-		for (int i=0; i<random.nextInt(200)+10; i++){
+		for (int i=0; i<random.nextInt(10)+10; i++){
 			returnVal.append(getRandomCharacter());
 		}
 		return returnVal.toString();

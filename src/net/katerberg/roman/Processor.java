@@ -20,8 +20,12 @@ public class Processor {
 		}
 		
 	}
-
+	
 	public String convert(int unconverted) {
+		if (!isInputValid(unconverted)) {
+			return null;
+		}
+		
 		List<Integer> sortedVals = new ArrayList<Integer>(numerals.values());
 		Collections.sort((List<Integer>)sortedVals);
 		Collections.reverse((List<Integer>)sortedVals);
@@ -33,13 +37,58 @@ public class Processor {
 				latinVal.append(arabics.get(value));
 			} 
 		}
-			
+		
 		return latinVal.toString();
 	}
-
+	
+	
 	public Integer convert(String numeral) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!isInputValid(numeral)) {
+			return null;
+		}
+		
+		List<Integer> sortedVals = new ArrayList<Integer>(numerals.values());
+		Collections.sort((List<Integer>)sortedVals);
+		Collections.reverse((List<Integer>)sortedVals);
+		
+		Integer returnVal = 0;
+		while(!numeral.isEmpty()){
+			for (Integer value : sortedVals) {
+				String prefixToCheck = arabics.get(value);
+				if (numeral.startsWith(prefixToCheck)) {
+					returnVal += value;
+					//Cut off the piece we just used
+					numeral = numeral.substring(prefixToCheck.length(), numeral.length());
+				}
+				
+				arabics.get(value);
+			}	
+		}
+		return returnVal;
 	}
-
+	
+	private boolean isInputValid(int test) {
+		if (test > 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean isInputValid(String test) {
+		//Make sure it's not empty
+		if (null == test || test.isEmpty()) {
+			return false;
+		}
+		//Make sure only valid characters are in it
+		StringBuilder validValues = new StringBuilder();
+		for (String value : arabics.values()) {
+			validValues.append(value);
+		}
+		
+		if (!test.matches("^["+validValues+"]+$")) {
+			return false;
+		}
+		
+		return true;
+	}
 }
