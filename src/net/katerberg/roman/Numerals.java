@@ -27,6 +27,12 @@ public class Numerals {
 		//Make sure only valid characters are in it
 		StringBuilder validValues = new StringBuilder();
 		for (String value : _INSTANCE.keySet()) {
+			if (value.length() == 1 && testedString.contains(value+value+value+value)){
+				return false;
+			}
+			if (value.length() == 2 && testedString.contains(value+value)){
+				return false;
+			}
 			validValues.append(value);
 		}
 		
@@ -34,6 +40,7 @@ public class Numerals {
 			return false;
 		}
 		
+		//No values can have more than 3 next to one another
 		
 		return true;
 	}

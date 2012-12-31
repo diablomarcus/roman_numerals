@@ -7,18 +7,24 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class NumeralsTest {
-	
 
+	Map<String, Integer> testObject;
+	
+	@Before
+	public void setUp(){
+		testObject = Numerals.getInstance();
+	}
+	
 	@Test
 	public void testNumerals_is_singleton() {
 		
 		String testKey = getRandomString();
 		int testValue = getRandomInteger();
 		
-		Map<String, Integer> testObject = Numerals.getInstance();
 
 		assertNotNull(testObject);
 		assertFalse(testObject.containsKey(testKey));
@@ -36,8 +42,15 @@ public class NumeralsTest {
 		assertFalse(Numerals.isValidNumeral("FXSADF")); //Random chars
 		assertFalse(Numerals.isValidNumeral("iv")); //Lowers
 		assertFalse(Numerals.isValidNumeral("V13")); //Numerics
-		assertFalse(Numerals.isValidNumeral("IIV")); //Double pre-vals
-		assertFalse(Numerals.isValidNumeral("IC")); //Weird orderings
+		assertFalse(Numerals.isValidNumeral("CXIVIV")); //More than 2 of a two-part val
+		assertFalse(Numerals.isValidNumeral("IVVVV")); //More than 3 of a val
+		
+		//Ignoring these after thinking about it for a while.
+		//The question as asked doesn't ask for any validation, 
+		// so it seems silly to write a pretty complex validation for these bad inputs
+		//They will not cause errors; they'll just give weird answers (for weird inputs)
+//		assertFalse(Numerals.isValidNumeral("IIV")); //Double pre-vals
+//		assertFalse(Numerals.isValidNumeral("IC")); //Weird orderings
 	}
 	
 	
