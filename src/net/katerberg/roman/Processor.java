@@ -21,6 +21,7 @@ public class Processor {
 			arabics.put(numerals.get(value), value);
 		}
 		
+		//Make sure we have things ordered from biggest to smallest
 		descendingValues = new ArrayList<Integer>(numerals.values());
 		Collections.sort((List<Integer>)descendingValues);
 		Collections.reverse((List<Integer>)descendingValues);
@@ -44,7 +45,7 @@ public class Processor {
 	
 	
 	public Integer convert(String numeral) {
-		if (!isInputValid(numeral)) {
+		if (!Numerals.isValidNumeral(numeral)) {
 			return null;
 		}
 		
@@ -57,8 +58,6 @@ public class Processor {
 					//Cut off the piece we just used
 					numeral = numeral.substring(prefixToCheck.length(), numeral.length());
 				}
-				
-				arabics.get(value);
 			}	
 		}
 		return returnVal;
@@ -69,23 +68,5 @@ public class Processor {
 			return true;
 		}
 		return false;
-	}
-	
-	private boolean isInputValid(String test) {
-		//Make sure it's not empty
-		if (null == test || test.isEmpty()) {
-			return false;
-		}
-		//Make sure only valid characters are in it
-		StringBuilder validValues = new StringBuilder();
-		for (String value : arabics.values()) {
-			validValues.append(value);
-		}
-		
-		if (!test.matches("^["+validValues+"]+$")) {
-			return false;
-		}
-		
-		return true;
 	}
 }
