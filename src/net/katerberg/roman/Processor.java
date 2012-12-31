@@ -1,17 +1,43 @@
 package net.katerberg.roman;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Processor {
+	//TODO: Make this bidirectional
+	Map<Character, Integer> numerals;
+	Map<Integer, Character> arabics;
 	
 	public Processor() {
+		numerals = Numerals.getInstance();
+		arabics = new HashMap<Integer, Character>();
+		//This is ugly as hell, but I need BiMap or BiDiMap to make it cleaner.
+		for(Character value : numerals.keySet()){
+			arabics.put(numerals.get(value), value);
+		}
 		
 	}
 
-	public String convert(int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public String convert(int unconverted) {
+		List<Integer> sortedVals = new ArrayList<Integer>(numerals.values());
+		Collections.sort((List<Integer>)sortedVals);
+		Collections.reverse((List<Integer>)sortedVals);
+		
+		StringBuilder latinVal = new StringBuilder();
+		for (Integer value : sortedVals) {
+			while (unconverted / value >= 1){
+				unconverted -= value;
+				latinVal.append(arabics.get(value));
+			} 
+		}
+			
+		return latinVal.toString();
 	}
 
-	public Integer convert(String randomString) {
+	public Integer convert(String numeral) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -34,7 +34,7 @@ public class ProcessorTest {
 		
 		for(Integer testCase : testCases.values()){
 			String returnVal = testObject.convert(testCase);
-			assertTrue(testCases.containsKey(returnVal));
+			assertTrue("Returned " + returnVal + " for " + testCase + " rather than the right answer", testCases.containsKey(returnVal));
 			assertEquals(testCase, testCases.get(returnVal));
 		}
 	}

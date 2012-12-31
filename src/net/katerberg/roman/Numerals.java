@@ -10,6 +10,8 @@ public class Numerals {
 	private void Numerals(){
 	}
 	
+	//This will always be a bidirectional map. I super-promise. We'll ensure this with BiDiMap when I get internet access.
+	//TODO: Make this bidirectional.
 	public synchronized static Map<Character, Integer> getInstance(){
 		if (null == _INSTANCE) {
 			createNewInstance();
