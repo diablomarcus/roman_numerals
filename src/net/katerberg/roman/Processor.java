@@ -11,7 +11,7 @@ public class Processor {
 	private final Map<String, Integer> numerals;
 	private final Map<Integer, String> arabics;
 
-	private final List<Integer> sortedVals;
+	private final List<Integer> descendingValues;
 	
 	public Processor() {
 		numerals = Numerals.getInstance();
@@ -21,9 +21,9 @@ public class Processor {
 			arabics.put(numerals.get(value), value);
 		}
 		
-		sortedVals = new ArrayList<Integer>(numerals.values());
-		Collections.sort((List<Integer>)sortedVals);
-		Collections.reverse((List<Integer>)sortedVals);
+		descendingValues = new ArrayList<Integer>(numerals.values());
+		Collections.sort((List<Integer>)descendingValues);
+		Collections.reverse((List<Integer>)descendingValues);
 	}
 	
 	public String convert(int unconverted) {
@@ -32,7 +32,7 @@ public class Processor {
 		}
 		
 		StringBuilder latinVal = new StringBuilder();
-		for (Integer value : sortedVals) {
+		for (Integer value : descendingValues) {
 			while (unconverted / value >= 1){
 				unconverted -= value;
 				latinVal.append(arabics.get(value));
@@ -50,7 +50,7 @@ public class Processor {
 		
 		Integer returnVal = 0;
 		while(!numeral.isEmpty()){
-			for (Integer value : sortedVals) {
+			for (Integer value : descendingValues) {
 				String prefixToCheck = arabics.get(value);
 				if (numeral.startsWith(prefixToCheck)) {
 					returnVal += value;

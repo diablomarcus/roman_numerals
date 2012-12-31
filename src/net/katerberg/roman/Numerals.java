@@ -18,6 +18,10 @@ public class Numerals {
 		}
 		return _INSTANCE;
 	}
+	
+	public synchronized static boolean isValidNumeral(String testedString){
+		return false;
+	}
 
 	private static void createNewInstance() {
 		_INSTANCE=new HashMap<String, Integer>();
