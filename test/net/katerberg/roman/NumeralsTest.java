@@ -1,7 +1,6 @@
 package net.katerberg.roman;
 
-import static net.katerberg.roman.TestingUtil.getRandomCharacter;
-import static net.katerberg.roman.TestingUtil.getRandomInteger;
+import static net.katerberg.roman.TestingUtil.*;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
@@ -15,10 +14,10 @@ public class NumeralsTest {
 	@Test
 	public void testNumerals_is_singleton() {
 		
-		Character testKey = getRandomCharacter();
+		String testKey = getRandomString();
 		int testValue = getRandomInteger();
 		
-		Map<Character, Integer> testObject = Numerals.getInstance();
+		Map<String, Integer> testObject = Numerals.getInstance();
 
 		assertNotNull(testObject);
 		assertFalse(testObject.containsKey(testKey));

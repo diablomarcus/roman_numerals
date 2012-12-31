@@ -5,14 +5,14 @@ import java.util.Map;
 
 public class Numerals {
 
-	private static Map<Character, Integer> _INSTANCE;
+	private static Map<String, Integer> _INSTANCE;
 	
-	private void Numerals(){
+	private Numerals(){
 	}
 	
 	//This will always be a bidirectional map. I super-promise. We'll ensure this with BiDiMap when I get internet access.
 	//TODO: Make this bidirectional.
-	public synchronized static Map<Character, Integer> getInstance(){
+	public synchronized static Map<String, Integer> getInstance(){
 		if (null == _INSTANCE) {
 			createNewInstance();
 		}
@@ -20,13 +20,13 @@ public class Numerals {
 	}
 
 	private static void createNewInstance() {
-		_INSTANCE=new HashMap<Character, Integer>();
-		_INSTANCE.put('I', 1);
-		_INSTANCE.put('V', 5);
-		_INSTANCE.put('X', 10);
-		_INSTANCE.put('L', 50);
-		_INSTANCE.put('C', 100);
-		_INSTANCE.put('D', 500);
-		_INSTANCE.put('M', 1000);
+		_INSTANCE=new HashMap<String, Integer>();
+		_INSTANCE.put("I", 1);
+		_INSTANCE.put("V", 5);
+		_INSTANCE.put("X", 10);
+		_INSTANCE.put("L", 50);
+		_INSTANCE.put("C", 100);
+		_INSTANCE.put("D", 500);
+		_INSTANCE.put("M", 1000);
 	}
 }

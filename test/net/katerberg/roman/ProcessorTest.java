@@ -61,12 +61,14 @@ public class ProcessorTest {
 	@Test
 	public void testProcessor_handles_nonlatin_strings() {
 		String randomString;
-		Map<Character, Integer> numerals = Numerals.getInstance();
+		Map<String, Integer> numerals = Numerals.getInstance();
 		do {
 		 randomString = getRandomString();
 		 assertNotNull(randomString);
 		 //Make sure this string isn't a valid one
-		} while (randomString.isEmpty() || numerals.containsKey(randomString.charAt(0)));
+		} while (randomString.length() < 2 
+				|| numerals.containsKey(randomString.charAt(0)) 
+				|| numerals.containsKey(randomString.subSequence(0, 1)));
 		
 		assertNull(testObject.convert(randomString));
 	}

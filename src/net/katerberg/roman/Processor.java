@@ -8,14 +8,14 @@ import java.util.Map;
 
 public class Processor {
 	//TODO: Make this bidirectional
-	Map<Character, Integer> numerals;
-	Map<Integer, Character> arabics;
+	Map<String, Integer> numerals;
+	Map<Integer, String> arabics;
 	
 	public Processor() {
 		numerals = Numerals.getInstance();
-		arabics = new HashMap<Integer, Character>();
+		arabics = new HashMap<Integer, String>();
 		//This is ugly as hell, but I need BiMap or BiDiMap to make it cleaner.
-		for(Character value : numerals.keySet()){
+		for(String value : numerals.keySet()){
 			arabics.put(numerals.get(value), value);
 		}
 		
