@@ -3,10 +3,6 @@ package net.katerberg.roman;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author diablo
- *
- */
 public class Numerals {
 
 	private static Map<String, Integer> _INSTANCE;
@@ -14,8 +10,7 @@ public class Numerals {
 	private Numerals(){
 	}
 	
-	//This will always be a bidirectional map. I super-promise. We'll ensure this with BiDiMap when I get internet access.
-	//TODO: Make this bidirectional.
+	//This will always be a bidirectional map. I super-promise.
 	/**
 	 * Singleton map of available Latin numeral representations.
 	 * 

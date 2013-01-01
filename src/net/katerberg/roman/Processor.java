@@ -8,7 +8,6 @@ import java.util.Map;
 
 
 public class Processor {
-	//TODO: Make this bidirectional
 	private final Map<String, Integer> numerals;
 	private final Map<Integer, String> arabics;
 
@@ -17,7 +16,7 @@ public class Processor {
 	public Processor() {
 		numerals = Numerals.getInstance();
 		arabics = new HashMap<Integer, String>();
-		//This is ugly as hell, but I need BiMap or BiDiMap to make it cleaner.
+		//This is ugly as hell, but BiDiMap seems to make it even worse.
 		for(String value : numerals.keySet()){
 			arabics.put(numerals.get(value), value);
 		}
